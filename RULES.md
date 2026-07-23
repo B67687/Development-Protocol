@@ -80,6 +80,24 @@ The protocol is NOT a fixed pipeline — it's a routing system that selects the 
             └── Route: MAINTENANCE — PERFECT → DISTRIBUTE only (no new features)
 ```
 
+### Sub-Cycle Routing (Recursive Protocol)
+
+Every dimension in the MECE tree gets a **Level of Care** (see DECOMPOSITION.md).
+If a dimension is Level 3 or higher, start a NEW protocol cycle for it:
+
+```
+NEW SESSION (fresh context)
+  │
+  ├── Inherits: parent project's X, one-way doors, appetite
+  ├── Own scope: the sub-component only
+  ├── Pipeline: AMBITION → LANDSCAPE → VALIDATION → SPECIFICATION → EXECUTOR → POLISH → EXPLAINER → SPEC_SYNC → REVIEW
+  └── Output: sub-component spec + code → integrated back into parent
+```
+
+The sub-cycle is NOT a full EXTRACTION — the parent already validated the problem.
+It starts at AMBITION (set appetite for the sub-component) and goes through REVIEW.
+The parent project integrates the sub-component's output at the POLISH phase.
+
 ## 2. Intent Decomposition (Recursive Breakdown)
 
 > Before ANY planning or architecture, classify and decompose the raw intent.

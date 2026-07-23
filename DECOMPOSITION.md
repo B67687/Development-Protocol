@@ -75,7 +75,31 @@ Stop when ALL leaf dimensions are:
 
 ## Recursion
 
-DECOMPOSITION follows the **Recursion Meta-Rule**: if a dimension is still ambiguous after one pass, decompose it again deeper. Most dimensions resolve within 2 levels. After 3 levels of decomposition without convergence, the dimension is Complex (not Complicated) — stop decomposing and assign it to VALIDATION.
+DECOMPOSITION follows the **Recursion Meta-Rule**: if a dimension is still ambiguous after one pass, decompose it again deeper. Most dimensions resolve within 2 levels.
+
+After 3 levels of decomposition without convergence, the dimension is Complex (not Complicated) — stop decomposing and assign it to VALIDATION.
+
+## Level of Care (Sub-Cycle Routing)
+
+Each MECE leaf gets a Level of Care. This decides whether the leaf needs its own
+full protocol cycle or just direct execution:
+
+| Level | Meaning                            | Example                        | Needs                          |
+| ----- | ---------------------------------- | ------------------------------ | ------------------------------ |
+| **1** | Trivial. No protocol.              | Config file, logging setup     | Just implement                 |
+| **2** | Standard. One AI session.          | CRUD endpoint, CLI command     | Quick spec + build             |
+| **3** | Sub-project. Own REVIEW.           | Plugin system, custom protocol | Full cycle minus EXTRACTION    |
+| **4** | Independent system. Full protocol. | Microservice, library          | Full EXTRACTION through REVIEW |
+
+**Decision rule:** Estimate cost(wrong) vs cost(protocol run) in 30 seconds.
+
+- If cost(wrong) > cost(protocol run) -> Level 3+
+- If cost(wrong) <= cost(protocol run) -> Level 1-2
+- Default to Level 2 when unsure (one session is cheap)
+
+**For Level 3+ leaves:** Fork into a new protocol cycle. Start a new AI session.
+Run the same pipeline (AMBITION through REVIEW) scoped to this sub-component only.
+The sub-project inherits the parent's context but has its own appetite and spec.
 
 ## Provenness
 
