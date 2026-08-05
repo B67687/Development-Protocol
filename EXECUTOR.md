@@ -275,11 +275,12 @@ An architecture problem is not only "does structure exist for this concern" — 
 
 Fitness functions verify COMPLIANCE with the chosen architecture — they cannot judge the choice itself; that is the MACRO gate's job. ATAM-style evaluation also runs within a class, not across classes.
 
-**Escalation rule (when the problem is the meta):**
-1. **Signal** — recurring defects at the same boundary: change amplification (a simple change touches many places), co-change clusters, every feature at a boundary paying the same tax (Conway imprint).
-2. **Audit the feature's own architecture first** — if right-shaped, escalate up a level: is the meta constraining it?
-3. **Fix as an atomic, reversible move** (Strangler Fig / evolutionary architecture) — never rewrite-by-default.
-4. **Gate:** modularity must be sound before escalating — a bad modular monolith is not fixed by microservices (Simon Brown's boundary condition).
+**Escalation rule (when a problem is structural):**
+1. **Diagnose top-down, never surface-first** — scan the **meta architecture first**, then descend one level at a time (meta → subsystem → feature) until the problem's home is found: the first level whose structure is wrong-shaped for its class. Never commit to a fix at the surface before this scan — surface fixes add bloat to the whole system.
+2. **Bloat Test** — reject any fix that requires adding an exception, special case, or workaround: the structure at some level is forcing that bloat. The right fix removes the exception; the wrong fix adds it. A clean top-down scan (every level right-shaped) means the problem is genuinely local — fix locally, bloat-free.
+3. **Recurrence signal** — recurring defects at the same boundary (change amplification, co-change clusters, every feature paying the same tax / Conway imprint) makes the scan mandatory, not optional.
+4. **Fix at the found level, atomically and reversibly** (Strangler Fig / evolutionary architecture) — never rewrite-by-default.
+5. **Gate:** modularity must be sound before an up-level fix — a bad modular monolith is not fixed by microservices (Simon Brown's boundary condition).
 
 **Re-audit cadence:** every MACRO decision records a review date; a decision later reversed is marked superseded in its own record.
 
@@ -374,3 +375,5 @@ If the answer is "nothing" — but the addition is also unnecessary (the artifac
 | **Value** | The marginal quality gain is positive | The marginal quality gain is zero or negative |
 
 **The deep counterweight (from M1's own counter-evidence):** redundancy is sometimes the point — safety-critical systems deliberately add. The test is NOT "never add". It is "addition beyond the completion boundary destroys value". Know where the boundary is.
+
+**Structural form:** if an addition is *needed* because the system has no natural home for the concern — the fix would require an exception — apply the Bloat Test (Escalation rule): the problem is architectural, not the addition's.
