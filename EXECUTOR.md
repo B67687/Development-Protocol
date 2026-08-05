@@ -263,6 +263,26 @@ For Tier 2+ projects (runtime, CLI, library, or performance-sensitive), consult 
 
 **Where they run:** mechanisms are implemented in the PROJECT (CI/lint/tests). The protocol's job is to REQUIRE them; the FINISH gate CHECKs them.
 
+### Architecture Fitness Audit (per level) + Escalation Rule
+
+An architecture problem is not only "does structure exist for this concern" — it is whether the structure is the optimal GENERAL one for the class, at every level. Two failure modes: structure **absent** (no home for the concern) vs **malformed** (present, wrong class-fit).
+
+| Level | Question | Check | Type |
+| --- | --- | --- | --- |
+| **MACRO** (meta) | Is the top paradigm optimal for the product class? (No style suits all problems — Shaw & Clements boxology) | Qualitative paradigm-fit gate: class-ID via Cynefin / Problem Frames; the MACRO decision records its class-ID reasoning + one falsification criterion | Human gate |
+| **MESO** | Are component contracts right-shaped for their class? | Contract/invariant checks, interface rules, transition-table tests | Codified |
+| **MICRO** | Is the implementation minimally correct for the class? | Layer/import rules, size rules, mutation testing | Codified |
+
+Fitness functions verify COMPLIANCE with the chosen architecture — they cannot judge the choice itself; that is the MACRO gate's job. ATAM-style evaluation also runs within a class, not across classes.
+
+**Escalation rule (when the problem is the meta):**
+1. **Signal** — recurring defects at the same boundary: change amplification (a simple change touches many places), co-change clusters, every feature at a boundary paying the same tax (Conway imprint).
+2. **Audit the feature's own architecture first** — if right-shaped, escalate up a level: is the meta constraining it?
+3. **Fix as an atomic, reversible move** (Strangler Fig / evolutionary architecture) — never rewrite-by-default.
+4. **Gate:** modularity must be sound before escalating — a bad modular monolith is not fixed by microservices (Simon Brown's boundary condition).
+
+**Re-audit cadence:** every MACRO decision records a review date; a decision later reversed is marked superseded in its own record.
+
 > **Source:** State-machine modeling and transition tests (Harel 1987; Torkar et al.), co-change prediction (D'Ambros et al., MSR 2010), fitness functions (Ford, Parsons, Kua), characterization tests (Feathers), mutation testing (Just et al., FSE 2014), change amplification (Ousterhout). Confidence: Medium-High — strongest on mutation testing and co-change prediction.
 
 ---
