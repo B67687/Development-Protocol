@@ -7,8 +7,10 @@
 
 # Whitelist the tracked corpus
 !/*.md
-!/.omo/.gitignore
 !/cli/**
 !/docs/**
 !/scripts/**
 !/template/**
+
+# .omo/ is its own nested git repo — never part of the parent tree
+/.omo/
