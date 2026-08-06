@@ -200,6 +200,11 @@ Define this at bootstrap. It locks when you enter WORK. It does NOT lock during 
 - [ ]
 
 > Each IN SCOPE item becomes an `approved` feature entry (`F-###`) in FEATURES.md (docs/FEATURES.md) — the seed of the standing feature/behavior inventory. **The feature draft is AI-generated, default-autonomous, at AMBITION** (MECE leaves seed `proposed` F-###) **and folds into the STRATEGY ratification** — the scope block IS the inventory; no second user gate (Invariant 11). **Tiered:** Type-1 / one-way-door projects write full behavior contracts at AMBITION; Type-2 / fast-path projects carry a bare inventory (IDs + one-line intent) hardened to full contracts at SPECIFICATION. OUT OF SCOPE items are never-proposed there (or `archived` with a reason if previously applied).
+> **Mid-pipeline adoption (backfill):** a project already past AMBITION when this inventory
+> discipline lands seeds FEATURES.md at the next Session Kickoff — from the current V1 scope
+> + whatever has shipped — and gives each `applied` feature a characterization test
+> (EXECUTOR Regression-Lock) before any further edits to it. No retroactive ceremony;
+> the differential lock starts at adoption, not at project birth.
 
 ### OUT OF SCOPE (explicitly not in V1)
 
