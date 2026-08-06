@@ -1,0 +1,14 @@
+# Git-accept: ignore everything by default; only whitelisted paths are trackable.
+# See scripts/check.sh + REVIEW.md 4.5 for the local check contract.
+
+*
+!*/
+!.gitignore
+
+# Whitelist the tracked corpus
+!/*.md
+!/.omo/.gitignore
+!/cli/**
+!/docs/**
+!/scripts/**
+!/template/**
