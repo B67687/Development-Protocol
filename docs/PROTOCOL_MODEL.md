@@ -14,7 +14,7 @@ INBOX → PRIORITIZE(opt) → EXTRACTION → SERIOUSNESS → FUNDAMENTALS (incl.
 
 | State | Meaning |
 |---|---|
-| `INBOX` | Run-Shape Selector triage first (Light/Standard/Brownfield — see INBOX.md); raw thoughts captured, clustered, one cluster selected; mode + any reanchor ratification logged to method ledger |
+| `INBOX` | Raw-Thinking Pass first (Phase 5, Cluster AN): pure generation — intuitions, perspectives, connections, alternative framings (raw GENERATES, protocol VERIFIES). Then Run-Shape Selector triage (Light/Standard/Brownfield — see INBOX.md); raw thoughts captured, clustered, one cluster selected; mode + any reanchor ratification logged to method ledger |
 | `PRIORITIZE` (optional) | 2-10 ideas compared on Want/Know/Work/Matters (4-dimension), What-Matters Check picks one bet — AI proposal + user ratification both logged |
 | `EXTRACTION` | X (real problem) extracted from Y (stated request) |
 | `SERIOUSNESS` | Commitment gate — is X worth pursuing? (D2b proven-earner benchmark fires when the money-tier decision is live) |
