@@ -1,0 +1,38 @@
+# Standard gitignore: track everything by default; only build artifacts,
+# See scripts/check.sh + steps/REVIEW.md 4.5 for the local check contract.
+// Anything private lives in the Development-Protocol-Local/ sibling folder
+// (never inside this repo).
+
+# Local-only nested state (own git repo, never part of this tree)
+/.omo/
+
+# Rust (cli/)
+cli/target/
+**/*.rs.bk
+
+# Python (prototype/, fixtures/)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Secrets / environment
+.env
+.env.*
+*.pem
+*.key
+
+# OS / editor droppings
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+
+# Guard: the -Local sibling must never be recreated inside the repo (see HANDOVER 2026-09-09 footgun).
+Development-Protocol-Local/
