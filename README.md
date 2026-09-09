@@ -85,6 +85,7 @@ If the diagram feels detailed, follow the bold line above and open the interacti
 Step docs are the single source of truth for entry/exit criteria; see also `steps/RULES.md`.
 
 </details>
+
 ## Composability
 
 - **Module mode:** `EXTRACTION` + `SERIOUSNESS` evaluates an idea fast. `VALIDATION` → `EXECUTOR` builds without re-extracting. `LANDSCAPE` + `REVIEW` audits existing research.
